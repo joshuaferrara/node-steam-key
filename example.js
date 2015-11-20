@@ -2,7 +2,6 @@ var steamKey = require("./"),
 	Steam = require("steam"),
 	bot = new Steam.SteamClient(),
 	steamUser = new Steam.SteamUser(bot),
-	steamGC = new Steam.SteamGameCoordinator(bot, 0);
 	SteamRegistrar = new steamKey.SteamRegistrar(steamUser, bot, true),
 	readlineSync = require("readline-sync"),
 	fs = require('fs'),

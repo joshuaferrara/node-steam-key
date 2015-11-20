@@ -10,6 +10,8 @@ Finally, I do not provide **any** support for this library. **Use at your own ri
 
 # Usage
 
+Initialize a SteamRegistrar object and call the methods below on the created object. Refer to example.js for a full example.
+
 ### Methods
 
 ##### `activateKey(string key)` - Sends a request to activate a product key. Listen for the `purchaseResponse` event.
