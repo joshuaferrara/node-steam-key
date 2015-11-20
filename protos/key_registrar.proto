@@ -1,0 +1,9 @@
+message ClientRegisterKey {
+	optional string key = 1;
+}
+
+message ClientPurchaseResponse {
+	optional int32 eresult = 1;
+	optional int32 purchase_result_details = 2;
+	optional bytes purchase_receipt_info = 3;
+}
