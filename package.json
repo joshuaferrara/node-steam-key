@@ -1,0 +1,26 @@
+{
+  "name": "node-steam-key",
+  "version": "1.0.0",
+  "description": "Exposes an API for activating game/CD keys through the Steam client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshuaferrara/node-steam-key/"
+  },
+  "keywords": [
+    "steam",
+    "key",
+    "game",
+    "register",
+    "node-steam",
+    "node-csgo"
+  ],
+  "author": "Joshua Ferrara",
+  "license": "MIT",
+  "dependencies": {
+    "steam": "^1.3.0"
+  }
+}
