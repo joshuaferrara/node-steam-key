@@ -4,7 +4,7 @@ Exposes an API to activate game/CD keys on Steam via NodeJS.
 
 # Notice
 
-By using this library, I (Joshua Ferrara) am relieved of any legal issues you run into while using this library. Activating Steam keys via an API is a touchy subject and is most likely frowned upon. Keep this in mind while using this library.
+By using this library, I (Joshua Ferrara) am relieved of any legal issues you run into while using this library. This library is purely for educational purposes. Activating Steam keys via an unofficial API is a touchy subject and is most likely frowned upon. Keep this in mind while using this library.
 
 Finally, I do not provide **any** support for this library. **Use at your own risk.** Feel free to make any pull requests, though.
 
