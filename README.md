@@ -14,10 +14,12 @@ Initialize a SteamRegistrar object and call the methods below on the created obj
 
 ### Methods
 
-##### `activateKey(string key)` - Sends a request to activate a product key. Listen for the `purchaseResponse` event.
+##### `activateKey(string key, function(purchaseResponse))` - Sends a request to activate a product key. Listen for the `purchaseResponse` event or provide a callback. If a callback is provided, the `purchaseResponse` event will NOT be emitted.
 
 ```javascript
-SteamRegistrar.activateKey("AAAAA-BBBBB-CCCCC");
+SteamRegistrar.activateKey("AAAAA-BBBBB-CCCCC", function(purchaseResponse) {
+  [...]
+});
 ```
 
 ### Events

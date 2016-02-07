@@ -21,8 +21,8 @@ var SteamRegistrar = function SteamRegistrar(steamUser, steamGC, debug) {
 		if (self.debug)
 			console.info("Message from GC: " + msgId);
 
-		switch (msgId) { // In the event that we need more in the future.
-			case 763: 	 // ClientPurchaseResponse = 763;
+		switch (msgId) {	// In the event that we need more in the future.
+			case 763:		// ClientPurchaseResponse = 763;
 				if (self.debug)
 					console.info("Emitting purchaseResponse");
 				var purchaseResponse = protos.ClientPurchaseResponse.decode(message);
@@ -31,20 +31,26 @@ var SteamRegistrar = function SteamRegistrar(steamUser, steamGC, debug) {
 				break;
 		}
 	});
-}
+};
 
 util.inherits(SteamRegistrar, EventEmitter);
 
 SteamRegistrar.prototype.activateKey = function(key, callback) {
 	if (this.debug)
 		console.info("Sending activation request");
+	var newCallback = function(header, message) {
+		var purchaseResponse = protos.ClientPurchaseResponse.decode(message);
+		purchaseResponse.purchase_receipt_info = vdf.decode(purchaseResponse.purchase_receipt_info.toBuffer());
+		callback(purchaseResponse);
+	};
+	if (callback === undefined) newCallback = undefined;	// Otherwise, the event will not be emitted.
 	var payload = new protos.ClientRegisterKey({
 		key: key
 	});
 	this._gc._send({
 		msg: 743,		// ClientRegisterKey = 743;
 		proto: {},
-	}, payload.toBuffer(), callback);
-}
+	}, payload.toBuffer(), newCallback);
+};
 
 exports.SteamRegistrar = SteamRegistrar;

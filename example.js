@@ -23,12 +23,17 @@ var onSteamLogOn = function onSteamLogOn(response){
         process.exit();
     }
 
+    // You can listen for the purchaseResponse event...
     SteamRegistrar.on('purchaseResponse', function(resp) {
-    	console.log("Got activation info");
-    	console.log(resp);
-    })
+        console.log("Got purchaseResponse event");
+        console.log(resp);
+    });
 
-    SteamRegistrar.activateKey("AAAAA-BBBBB-CCCCC");
+    // Or you can provide a callback function with the activateKey method
+    SteamRegistrar.activateKey("AAAAA-BBBBB-CCCCC", function(purchaseResponse) {
+        console.log("purchaseResponse callback received purchaseResponse");
+        console.log(purchaseResponse);
+    });
 }, onSteamSentry = function onSteamSentry(sentry) {
     console.log("Received sentry.");
     fs.writeFileSync('sentry', sentry);
@@ -41,7 +46,7 @@ var authCode = readlineSync.question('AuthCode: ');
 var logonDetails = {
 	"account_name": username,
 	"password": password
-}
+};
 if (authCode !== "") {
     logonDetails.auth_code = authCode;
 }
