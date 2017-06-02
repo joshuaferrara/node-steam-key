@@ -2,7 +2,7 @@ var protos = require("./protos"),
 	protoMask = 0x80000000,
 	EventEmitter = require('events').EventEmitter,
 	util = require('util'),
-	vdf = require('./VDF');
+	bkv = require('binarykvparser');
 
 var SteamRegistrar = function SteamRegistrar(steamUser, steamGC, debug) {
 	EventEmitter.call(this);
@@ -40,7 +40,7 @@ SteamRegistrar.prototype.activateKey = function(key, callback) {
 		console.info("Sending activation request");
 	var newCallback = function(header, message) {
 		var purchaseResponse = protos.ClientPurchaseResponse.decode(message);
-		purchaseResponse.purchase_receipt_info = vdf.decode(purchaseResponse.purchase_receipt_info.toBuffer());
+		purchaseResponse.purchase_receipt_info = bkv.parse(purchaseResponse.purchase_receipt_info.toBuffer());
 		callback(purchaseResponse);
 	};
 	if (callback === undefined) newCallback = undefined;	// Otherwise, the event will not be emitted.
