@@ -1,6 +1,6 @@
 {
   "name": "node-steam-key",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Exposes an API for activating game/CD keys through the Steam client.",
   "main": "index.js",
   "scripts": {
